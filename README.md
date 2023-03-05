@@ -9,9 +9,12 @@ Mueve tu nave con las teclas de dirección y dispara con la presionando click iz
 ## ¿Cómo instalar?
 1. Clona el repositorio usando la terminal o descarga el zip.
 
-'''bash
-git clone
-'''
+```bash
+git clone https://github.com/Armandotrsg/SpaceShooter.git
+cd SpaceShooter
+```
+
+2. Corre el juego en Unity.
 
 ## Créditos
 - [@Armandotrsg](https://github.com/Armandotrsg)
