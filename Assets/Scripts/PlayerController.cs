@@ -50,9 +50,9 @@ public class PlayerController : MonoBehaviour {
         //Create a new variable called rotation, which will hold the current rotation of the player.
         Quaternion rotation = transform.rotation;
         //Set the x-axis and y-axis rotations of the rotation variable to 0 and add 90 to the z axis rotation.
-        rotation.eulerAngles = new Vector3(0, 0, 90);
+        rotation.eulerAngles = new Vector3(0, 0, 0);
         //Add 0.5 to the x-axis position, to make sure the bullet spawns in front of the player.
-        pos.x += 0.5f;
+        pos.y += 0.5f;
         //Spawn the bullet, with the position and rotation variables as parameters.
         Instantiate(proyectil, pos, rotation);
     }
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
         // Move the player
         MovePlayer();
         // Check if the player is shooting and if the cooldown is less than or equal to 0
-        if (Input.GetButtonDown("Fire1") && coolDown <= 0) {
+        if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump")) && coolDown <= 0) {
             // Shoot the player's weapon
             Shoot();
             // Set the cooldown to 0.5 seconds
