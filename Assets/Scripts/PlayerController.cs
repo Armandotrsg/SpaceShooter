@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
         // Move the player
         MovePlayer();
         // Check if the player is shooting and if the cooldown is less than or equal to 0
-        if (Input.GetButtonDown("Fire1") && coolDown <= 0) {
+        if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump")) && coolDown <= 0) {
             // Shoot the player's weapon
             Shoot();
             // Set the cooldown to 0.5 seconds
