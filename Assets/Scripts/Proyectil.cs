@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Proyectil : MonoBehaviour {
+    [SerializeField]
+    private float speed = 2f;
+    void Start()
+    {
+        Destroy(gameObject, 4f); // Destroy the bullet after 4 seconds
+    }
+
+    // Update is called once per frame
+    void Update() {
+        transform.Translate(new Vector3(1, 0, 0) * Time.deltaTime * speed, Space.World); // Move the bullet
+    }
+}
