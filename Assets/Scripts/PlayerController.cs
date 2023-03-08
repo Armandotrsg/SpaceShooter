@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour {
     private Proyectil proyectil;
 
     private float coolDown = 0.5f;
+    private IEnumerator delay;
 
     void Start() {
-        
+        delay = Delay();
     }
 
     /// <summary>
@@ -62,14 +63,21 @@ public class PlayerController : MonoBehaviour {
         // Move the player
         MovePlayer();
         // Check if the player is shooting and if the cooldown is less than or equal to 0
-        if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump")) && coolDown <= 0) {
-            // Shoot the player's weapon
+        if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump"))) {
+            // Start the delay coroutine
+            StartCoroutine(delay);
+        }
+
+        if (Input.GetButtonUp("Fire1") || Input.GetButtonUp("Jump")) {
+            // Stop the delay coroutine
+            StopCoroutine(delay);
+        }
+    }
+
+    IEnumerator Delay() {
+        while (true) {
             Shoot();
-            // Set the cooldown to 0.5 seconds
-            coolDown = 0.5f;
-        } else { // If the cooldown is greater than 0
-            // Reduce the cooldown by the time since the last update
-            coolDown -= Time.deltaTime;
+            yield return new WaitForSeconds(coolDown);
         }
     }
 }
