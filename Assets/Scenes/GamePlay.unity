@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 243630978}
   - component: {fileID: 243630977}
   m_Layer: 0
-  m_Name: xd
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazard: {fileID: 7292278250655787501, guid: ea15f437038a0cb4386ad18c3db65cb9, type: 3}
-  spawnValues: {x: 0, y: 2, z: 0}
+  spawnValues: {x: 0, y: 3, z: 0}
 --- !u!4 &243630978
 Transform:
   m_ObjectHideFlags: 0
