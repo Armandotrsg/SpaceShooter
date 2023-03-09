@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private Proyectil proyectil;
+
+
+    Coroutine currentCoroutine;
 
     private float coolDown = 0.5f;
 
@@ -48,9 +51,9 @@ public class PlayerController : MonoBehaviour {
     ///     Shoots a proyectil
     /// </summary>
     void Shoot() {
-        //Create a new variable called pos, which will hold the current position of the player.
+        //Create a new variable called pos, which will hold the currentCoroutine position of the player.
         Vector3 pos = transform.position;
-        //Create a new variable called rotation, which will hold the current rotation of the player.
+        //Create a new variable called rotation, which will hold the currentCoroutine rotation of the player.
         Quaternion rotation = transform.rotation;
         //Set the x-axis and y-axis rotations of the rotation variable to 0 and add 90 to the z axis rotation.
         rotation.eulerAngles = new Vector3(0, 0, 0);
@@ -65,14 +68,21 @@ public class PlayerController : MonoBehaviour {
         // Move the player
         MovePlayer();
         // Check if the player is shooting and if the cooldown is less than or equal to 0
-        if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump")) && coolDown <= 0) {
-            // Shoot the player's weapon
+        if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump"))) {
+            // Start the delay coroutine
+            currentCoroutine = StartCoroutine(Delay());
+        }
+
+        if (Input.GetButtonUp("Fire1") || Input.GetButtonUp("Jump")) {
+            // Stop the delay coroutine
+            StopCoroutine(currentCoroutine);
+        }
+    }
+
+    IEnumerator Delay() {
+        while (true) {
             Shoot();
-            // Set the cooldown to 0.5 seconds
-            coolDown = 0.5f;
-        } else { // If the cooldown is greater than 0
-            // Reduce the cooldown by the time since the last update
-            coolDown -= Time.deltaTime;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
