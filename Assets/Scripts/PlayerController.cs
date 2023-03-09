@@ -10,7 +10,17 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Proyectil proyectil;
 
+
     Coroutine currentCoroutine;
+
+    private float coolDown = 0.5f;
+
+    [SerializeField]
+    private float lives = 3;
+
+    void Start() {
+        
+    }
 
     /// <summary>
     ///     Moves the player and makes sure it doesn't go out of bounds
@@ -76,7 +86,20 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // IEnumerator CoolDown() {
-    //     yield return new WaitForSeconds(0.5f);
-    // }
+    // Detects if the player has collided with an enemy
+    void OnTriggerEnter(Collider other) {
+        // If the player has collided with an enemy
+        if (other.CompareTag("Enemy")) {
+            // Reduce the player's lives by 1
+            lives--;
+            // If the player has no more lives
+            if (lives <= 0) {
+                // Destroy the player
+                Destroy(gameObject);
+            } else { // If the player has more than 0 lives
+                // Destroy the enemy
+                Destroy(other.gameObject);
+            }
+        }
+    }
 }

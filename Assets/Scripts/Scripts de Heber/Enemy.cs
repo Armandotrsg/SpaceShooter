@@ -7,6 +7,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float live;
     [SerializeField] private GameObject dead;   
 
+    void Start()
+    {
+        Destroy(gameObject, 5);
+    }
+
     public void Damage(float damage)
     {
         live = live - damage;
