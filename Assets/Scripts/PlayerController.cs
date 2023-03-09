@@ -76,26 +76,17 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void onTriggerEnter(Collider other) {
-        print("Collision detected");
-        if (other.tag == "Enemy") {
+    // Detects if the player has collided with an enemy
+    void OnTriggerEnter(Collider other) {
+        // If the player has collided with an enemy
+        if (other.CompareTag("Enemy")) {
+            // Reduce the player's lives by 1
             lives--;
+            // If the player has no more lives
             if (lives <= 0) {
+                // Destroy the player
                 Destroy(gameObject);
-            } else {
-                // Destroy the enemy
-                Destroy(other.gameObject);
-            }
-        }
-    }
-
-    void onCollisionEnter(Collision other) {
-        print("Collision detected");
-        if (other.gameObject.tag == "Enemy") {
-            lives--;
-            if (lives <= 0) {
-                Destroy(gameObject);
-            } else {
+            } else { // If the player has more than 0 lives
                 // Destroy the enemy
                 Destroy(other.gameObject);
             }
