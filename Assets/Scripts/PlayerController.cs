@@ -16,10 +16,13 @@ public class PlayerController : MonoBehaviour {
     private float coolDown = 0.5f;
 
     [SerializeField]
-    private float lives = 3;
+    private int lives = 3;
+
+    [SerializeField]
+    private LivesGUI livesGUI;
 
     void Start() {
-        
+        livesGUI._texto.text = "Lives: " + lives;
     }
 
     /// <summary>
@@ -92,6 +95,8 @@ public class PlayerController : MonoBehaviour {
         if (other.CompareTag("Enemy")) {
             // Reduce the player's lives by 1
             lives--;
+            // Update the lives GUI
+            livesGUI._texto.text = "Lives: " + lives;
             // If the player has no more lives
             if (lives <= 0) {
                 // Destroy the player
