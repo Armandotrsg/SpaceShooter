@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class PlayerController : MonoBehaviour {
     
@@ -10,16 +11,50 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Proyectil proyectil;
 
+    private static PlayerController _instance;
+
+    public static PlayerController Instance {
+        get {
+            return _instance;
+        }
+    }
 
     Coroutine currentCoroutine;
 
     private float coolDown = 0.5f;
 
     [SerializeField]
-    private float lives = 3;
+    private int lives = 3;
+
+    private LivesGUI livesGUI;
+    private ScoreGUI scoreGUI;
+
+    private int score = 0;
+
+    public int Score {
+        get {
+            return score;
+        }
+        set {
+            score = value;
+        }
+    }
+
+    void Awake() {
+        
+    }
 
     void Start() {
-        
+        livesGUI = LivesGUI.Instance;
+        livesGUI._texto.text = "Lives: " + lives;
+        scoreGUI = ScoreGUI.Instance;
+        scoreGUI._texto.text = "Score: " + score;
+
+        if (_instance == null) {
+            _instance = this;
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -95,6 +130,13 @@ public class PlayerController : MonoBehaviour {
         if (other.CompareTag("Enemy") || other.CompareTag("ProyectilEnemigo")) {
             // Reduce the player's lives by 1
             lives--;
+            // Update the lives GUI
+            livesGUI._texto.text = "Lives: " + lives;
+
+            //Reduce score by 50
+            Score -= 50;
+            // Update the score GUI
+            scoreGUI._texto.text = "Score: " + Score;
             // If the player has no more lives
             if (lives <= 0) {
                 // Destroy the player
