@@ -88,8 +88,11 @@ public class PlayerController : MonoBehaviour {
 
     // Detects if the player has collided with an enemy
     void OnTriggerEnter(Collider other) {
+
+
+
         // If the player has collided with an enemy
-        if (other.CompareTag("Enemy")) {
+        if (other.CompareTag("Enemy") || other.CompareTag("ProyectilEnemigo")) {
             // Reduce the player's lives by 1
             lives--;
             // If the player has no more lives
