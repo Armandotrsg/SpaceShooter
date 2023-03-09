@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour {
 
     private float coolDown = 0.5f;
 
+    [SerializeField]
+    private float lives = 3;
+
     void Start() {
         
     }
@@ -70,6 +73,23 @@ public class PlayerController : MonoBehaviour {
         } else { // If the cooldown is greater than 0
             // Reduce the cooldown by the time since the last update
             coolDown -= Time.deltaTime;
+        }
+    }
+
+    // Detects if the player has collided with an enemy
+    void OnTriggerEnter(Collider other) {
+        // If the player has collided with an enemy
+        if (other.CompareTag("Enemy")) {
+            // Reduce the player's lives by 1
+            lives--;
+            // If the player has no more lives
+            if (lives <= 0) {
+                // Destroy the player
+                Destroy(gameObject);
+            } else { // If the player has more than 0 lives
+                // Destroy the enemy
+                Destroy(other.gameObject);
+            }
         }
     }
 }
