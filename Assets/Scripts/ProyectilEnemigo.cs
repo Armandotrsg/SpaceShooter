@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProyectilEnemigo : MonoBehaviour
 {
     //variables del disparo
-    [SerializeField]private float speed = 2f;
+    [SerializeField]private float speed = 4f;
     [SerializeField] private float damage;
     // Start is called before the first frame update
     void Start()

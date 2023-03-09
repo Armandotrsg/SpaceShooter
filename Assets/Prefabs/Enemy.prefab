@@ -130,3 +130,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   live: 20
   dead: {fileID: 0}
+  proyectil: {fileID: 710529598474374349, guid: 12f75123fa71644a1b2ee0ada2f5ad27,
+    type: 3}
