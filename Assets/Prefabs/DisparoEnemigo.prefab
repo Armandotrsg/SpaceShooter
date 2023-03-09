@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 710529598474374349}
   m_Layer: 0
   m_Name: DisparoEnemigo
-  m_TagString: Untagged
+  m_TagString: ProyectilEnemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,3 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9588d6b73680d4da6865695854838b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  damage: 0
