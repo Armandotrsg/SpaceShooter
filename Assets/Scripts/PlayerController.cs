@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class PlayerController : MonoBehaviour {
     
@@ -18,10 +19,14 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private int lives = 3;
 
-    [SerializeField]
     private LivesGUI livesGUI;
 
+    void Awake() {
+        
+    }
+
     void Start() {
+        livesGUI = LivesGUI.Instance;
         livesGUI._texto.text = "Lives: " + lives;
     }
 
