@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
                 transform.position,
                 transform.rotation);
             
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(2f);
             print("corrutina recurrente");
 
             

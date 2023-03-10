@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour {
 
     Coroutine currentCoroutine;
 
-    private float coolDown = 0.5f;
-
     [SerializeField]
     private int lives = 3;
 
@@ -133,8 +131,8 @@ public class PlayerController : MonoBehaviour {
             // Update the lives GUI
             livesGUI._texto.text = "Lives: " + lives;
 
-            //Reduce score by 50
-            Score -= 50;
+            //Reduce score by 20
+            Score -= 20;
             // Update the score GUI
             scoreGUI._texto.text = "Score: " + Score;
             // If the player has no more lives
