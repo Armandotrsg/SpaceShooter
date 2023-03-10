@@ -135,4 +135,3 @@ MonoBehaviour:
   proyectil: {fileID: 5356122522798832337, guid: c1f4c965e6638435c9b9830363a7f5df,
     type: 3}
   lives: 3
-  livesGUI: {fileID: 0}
